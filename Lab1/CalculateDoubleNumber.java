@@ -1,5 +1,4 @@
 // Example 5: CalculateDoubleNumber.java
-import javax.swing.JOptionPane;
 import java.util.Scanner;
 
 public class CalculateDoubleNumber {
