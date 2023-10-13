@@ -31,7 +31,7 @@ public class SortAndCalculate {
             iSum += arr[i];
         int iAvg = iSum/iN;
 
-        System.out.println("Array after sorting: ");
+        System.out.print("Array after sorting: ");
         for (int i=0; i<iN; i++)
             System.out.print(arr[i] + " ");
         System.out.print("\n");
