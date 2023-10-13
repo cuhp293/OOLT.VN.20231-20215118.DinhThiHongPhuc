@@ -1,3 +1,4 @@
+// Exercise 6.5
 import java.util.Scanner;
 
 public class SortAndCalculate {
@@ -13,6 +14,7 @@ public class SortAndCalculate {
         for (int i=0; i<iN; i++)
             arr[i] = keyboard.nextInt();
         
+        // Sort array
         for (int i=0; i<iN; i++) {
 			for (int j=1; j < iN-i; j++ ) {
 				if(arr[j-1] > arr[j]) {
@@ -23,6 +25,7 @@ public class SortAndCalculate {
 			}
 		}
 
+        // Calculate sum
         int iSum = 0;
         for (int i=0; i<iN; i++)
             iSum += arr[i];
