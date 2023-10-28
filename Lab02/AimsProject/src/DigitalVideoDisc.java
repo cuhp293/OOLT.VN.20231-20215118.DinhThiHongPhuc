@@ -24,6 +24,9 @@ public class DigitalVideoDisc {
     }
 
     // section 10: create constructor method
+    public DigitalVideoDisc() {
+	}
+
     public DigitalVideoDisc(String title) {
 		super();
 		this.title = title;
@@ -52,4 +55,21 @@ public class DigitalVideoDisc {
 		this.length = length;
 		this.cost = cost;
 	}
+
+	// set to change in TestPassingParameter.java
+	public void setTitle(String title) {
+        this.title = title;
+    }
+    public void setCategory(String category) {
+        this.category = category;
+    }
+    public void setDirector(String director) {
+        this.director = director;
+    }
+    public void setCost (float cost){
+        this.cost = cost;
+    }
+    public void setLength (int length){
+        this.length = length;
+    }
 }
