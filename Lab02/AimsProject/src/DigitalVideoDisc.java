@@ -5,6 +5,12 @@ public class DigitalVideoDisc {
     private String director;
     private int length;
     private float cost;
+    private int id;
+    private static int nbDigitalVideoDiscs = 0;
+
+    public int getId() {
+        return id;
+    }
 
     // section 9: create accesors and mutators
     public String getTitle() {
@@ -29,11 +35,13 @@ public class DigitalVideoDisc {
 
     public DigitalVideoDisc(String title) {
 		super();
+        this.id = Count();
 		this.title = title;
 	}
 	
 	public DigitalVideoDisc(String title, String category, float cost) {
 		super();
+        this.id = Count();
 		this.title = title;
 		this.category = category;
 		this.cost = cost;
@@ -41,6 +49,7 @@ public class DigitalVideoDisc {
 	
 	public DigitalVideoDisc(String title, String category, String director, float cost) {
 		super();
+        this.id = Count();
 		this.title = title;
 		this.category = category;
 		this.director = director;
@@ -49,6 +58,7 @@ public class DigitalVideoDisc {
 	
 	public DigitalVideoDisc(String title, String category, String director, int length, float cost) {
 		super();
+        this.id = Count();
 		this.title = title;
 		this.category = category;
 		this.director = director;
@@ -71,5 +81,10 @@ public class DigitalVideoDisc {
     }
     public void setLength (int length){
         this.length = length;
+    }
+
+    private int Count() {
+        nbDigitalVideoDiscs++;
+        return nbDigitalVideoDiscs;
     }
 }
