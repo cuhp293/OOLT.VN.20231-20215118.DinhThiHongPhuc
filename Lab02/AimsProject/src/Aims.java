@@ -10,7 +10,13 @@ public class Aims {
         anOrder.addDigitalVideoDisc(dvd2);
         DigitalVideoDisc dvd3 = new DigitalVideoDisc("Aladin", "Animation", 18.99f);
         anOrder.addDigitalVideoDisc(dvd3);
+        DigitalVideoDisc dvd4 = new DigitalVideoDisc("Doraemon", "Animation", 21.23f);
+        anOrder.addDigitalVideoDisc(dvd4);
 
+        // Remove DVD
+        anOrder.removeDigitalVideoDisc(dvd4);
+
+        // Display the cart items
         anOrder.displayCartItems();
 
         // Print total cost of the items in the cart
