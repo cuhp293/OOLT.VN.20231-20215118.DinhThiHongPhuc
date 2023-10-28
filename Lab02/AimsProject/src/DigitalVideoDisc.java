@@ -1,10 +1,12 @@
 public class DigitalVideoDisc {
+    // section 8: add attributes
     private String title;
     private String category;
     private String director;
     private int length;
     private float cost;
 
+    // section 9: create accesors and mutators
     public String getTitle() {
         return title;
     }
@@ -21,6 +23,7 @@ public class DigitalVideoDisc {
         return cost;
     }
 
+    // section 10: create constructor method
     public DigitalVideoDisc(String title) {
 		super();
 		this.title = title;
