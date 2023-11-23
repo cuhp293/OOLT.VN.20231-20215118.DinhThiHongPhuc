@@ -57,7 +57,16 @@ public class Cart {
     }
 
 	public void print() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("******************************CART******************************");
+		System.out.println("Ordered Items:");
+
+        for (int i = 0; i < qtyOrdered; i++) {
+            DigitalVideoDisc dvd = itemsOrdered[i];
+            System.out.printf("%d. DVD - %s - %s - %s - %s: %.2f$\n",
+            		i+1, dvd.getTitle(), dvd.getCategory(), dvd.getDirector(), dvd.getLength(), dvd.getCost());
+        }
+
+        System.out.println("Total cost: " + totalCost());
+        System.out.println("****************************************************************");
 	}
 }
