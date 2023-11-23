@@ -1,4 +1,4 @@
-package hust.soict.hedspi.aims.disc.DigitalVideoDisc;
+package hust.soict.hedspi.aims.disc;
 
 public class DigitalVideoDisc {
 	// section 8: add attributes
