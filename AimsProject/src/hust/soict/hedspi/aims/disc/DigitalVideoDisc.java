@@ -3,102 +3,86 @@ package hust.soict.hedspi.aims.disc;
 import hust.soict.hedspi.aims.media.Media;
 
 public class DigitalVideoDisc extends Media {
-	// section 8: add attributes
-    private String title;
-    private String category;
+
     private String director;
     private int length;
-    private float cost;
-    private int id;
     private static int nbDigitalVideoDiscs = 0;
 
-    // section 10: create constructor method
+    // Create constructor method
     public DigitalVideoDisc() {
+    	super();
 	}
 
     public DigitalVideoDisc(String title) {
-		super();
-        this.id = Count();
-		this.title = title;
+		setTitle(title);
+		setId(nbDigitalVideoDiscs);
+		nbDigitalVideoDiscs++;
 	}
-	
-	public DigitalVideoDisc(String title, String category, float cost) {
+
+	public DigitalVideoDisc(String director, int length) {
 		super();
-        this.id = Count();
-		this.title = title;
-		this.category = category;
-		this.cost = cost;
+		this.director = director;
+		this.length = length;
+	}
+
+	public DigitalVideoDisc(String title, String category, float cost) {
+		setTitle(title);
+		setCategory(category);
+		setCost(cost);
+		setId(nbDigitalVideoDiscs);
+		nbDigitalVideoDiscs++;
 	}
 	
 	public DigitalVideoDisc(String title, String category, String director, float cost) {
-		super();
-        this.id = Count();
-		this.title = title;
-		this.category = category;
+		setTitle(title);
+		setCategory(category);
 		this.director = director;
-		this.cost = cost;
+		setCost(cost);
+		setId(nbDigitalVideoDiscs);
+		nbDigitalVideoDiscs++;
 	}
 	
 	public DigitalVideoDisc(String title, String category, String director, int length, float cost) {
-		super();
-        this.id = Count();
-		this.title = title;
-		this.category = category;
+		setTitle(title);
+		setCategory(category);
 		this.director = director;
 		this.length = length;
-		this.cost = cost;
+		setCost(cost);
+		setId(nbDigitalVideoDiscs);
+		nbDigitalVideoDiscs++;
 	}
-
-    private int Count() {
-        nbDigitalVideoDiscs++;
-        return nbDigitalVideoDiscs;
-    }
+	
+	public DigitalVideoDisc(int id, String title, String category, float cost, String director, int length) {
+		super(id, title, category, cost);
+		this.director = director;
+		this.length = length;
+	}
     
     public String toString() {
     	return this.getTitle() + " - " + this.getCategory() + " - " + this.getDirector()
     	 + " - " + this.getLength() + " - " + this.getCost() + "$\n";
     }
     public boolean isMatch(String title) {
-    	if (this.title.equals(title))
+    	if (getTitle().equals(title))
     		return true;
     	else
     		return false;
     }
     
-    public int getId() {
-        return id;
-    }
-    
-    // section 9: create accessors and mutators
-    public String getTitle() {
-        return title;
-    }
-    public String getCategory() {
-        return category;
-    }
+    // Create accessors and mutators
     public String getDirector() {
         return director;
     }
+    
     public int getLength() {
         return length;
     }
-    public float getCost() {
-        return cost;
-    }
-
+    
 	// set to change in TestPassingParameter.java
-	public void setTitle(String title) {
-        this.title = title;
-    }
-    public void setCategory(String category) {
-        this.category = category;
-    }
     public void setDirector(String director) {
         this.director = director;
     }
-    public void setCost (float cost){
-        this.cost = cost;
-    }
+    
     public void setLength (int length){
         this.length = length;
     }
