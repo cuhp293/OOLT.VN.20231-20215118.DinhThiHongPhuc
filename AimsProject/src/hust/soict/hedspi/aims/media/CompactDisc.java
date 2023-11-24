@@ -3,7 +3,7 @@ package hust.soict.hedspi.aims.media;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CompactDisc extends Disc {
+public class CompactDisc extends Disc implements Playable {
 	
 	private String artist;
 	private List<Track> tracks = new ArrayList<Track>();
@@ -37,14 +37,6 @@ public class CompactDisc extends Disc {
 			System.out.println("The track is not in the list.");
 		}
 	}
-
-	@Override
-	public int getLength() {
-		int total_length = 0;
-		for (Track i: tracks)
-			total_length += i.getLength();
-		return total_length;
-	}
 	
 	// Create getter and setter
 	public String getArtist() {
@@ -53,5 +45,21 @@ public class CompactDisc extends Disc {
 	public void setArtist(String artist) {
 		this.artist = artist;
 	}
+	
+	@Override
+	public int getLength() {
+		int total_length = 0;
+		for (Track i: tracks)
+			total_length += i.getLength();
+		return total_length;
+	}
+	
+	@Override
+	public void play() {
+        System.out.println("Playing CD: " + this.getTitle());
+        System.out.println("CD length: " + this.getLength());
+        for (Track track : tracks)
+            track.play();
+    }
 	
 }
