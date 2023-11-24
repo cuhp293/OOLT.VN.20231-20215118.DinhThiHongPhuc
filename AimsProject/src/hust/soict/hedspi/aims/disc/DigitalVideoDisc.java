@@ -1,6 +1,8 @@
 package hust.soict.hedspi.aims.disc;
 
-public class DigitalVideoDisc {
+import hust.soict.hedspi.aims.media.Media;
+
+public class DigitalVideoDisc extends Media {
 	// section 8: add attributes
     private String title;
     private String category;
@@ -9,27 +11,6 @@ public class DigitalVideoDisc {
     private float cost;
     private int id;
     private static int nbDigitalVideoDiscs = 0;
-
-    public int getId() {
-        return id;
-    }
-
-    // section 9: create accesors and mutators
-    public String getTitle() {
-        return title;
-    }
-    public String getCategory() {
-        return category;
-    }
-    public String getDirector() {
-        return director;
-    }
-    public int getLength() {
-        return length;
-    }
-    public float getCost() {
-        return cost;
-    }
 
     // section 10: create constructor method
     public DigitalVideoDisc() {
@@ -68,6 +49,43 @@ public class DigitalVideoDisc {
 		this.cost = cost;
 	}
 
+    private int Count() {
+        nbDigitalVideoDiscs++;
+        return nbDigitalVideoDiscs;
+    }
+    
+    public String toString() {
+    	return this.getTitle() + " - " + this.getCategory() + " - " + this.getDirector()
+    	 + " - " + this.getLength() + " - " + this.getCost() + "$\n";
+    }
+    public boolean isMatch(String title) {
+    	if (this.title.equals(title))
+    		return true;
+    	else
+    		return false;
+    }
+    
+    public int getId() {
+        return id;
+    }
+    
+    // section 9: create accessors and mutators
+    public String getTitle() {
+        return title;
+    }
+    public String getCategory() {
+        return category;
+    }
+    public String getDirector() {
+        return director;
+    }
+    public int getLength() {
+        return length;
+    }
+    public float getCost() {
+        return cost;
+    }
+
 	// set to change in TestPassingParameter.java
 	public void setTitle(String title) {
         this.title = title;
@@ -84,20 +102,5 @@ public class DigitalVideoDisc {
     public void setLength (int length){
         this.length = length;
     }
-
-    private int Count() {
-        nbDigitalVideoDiscs++;
-        return nbDigitalVideoDiscs;
-    }
     
-    public String toString() {
-    	return this.getTitle() + " - " + this.getCategory() + " - " + this.getDirector()
-    	 + " - " + this.getLength() + " - " + this.getCost() + "$\n";
-    }
-    public boolean isMatch(String title) {
-    	if (this.title.equals(title))
-    		return true;
-    	else
-    		return false;
-    }
 }
