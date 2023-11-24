@@ -89,4 +89,15 @@ public class DigitalVideoDisc {
         nbDigitalVideoDiscs++;
         return nbDigitalVideoDiscs;
     }
+    
+    public String toString() {
+    	return this.getTitle() + " - " + this.getCategory() + " - " + this.getDirector()
+    	 + " - " + this.getLength() + " - " + this.getCost() + "$\n";
+    }
+    public boolean isMatch(String title) {
+    	if (this.title.equals(title))
+    		return true;
+    	else
+    		return false;
+    }
 }

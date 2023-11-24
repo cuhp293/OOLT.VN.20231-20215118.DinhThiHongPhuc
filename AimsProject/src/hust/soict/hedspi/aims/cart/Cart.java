@@ -1,5 +1,7 @@
 package hust.soict.hedspi.aims.cart;
 
+import java.util.Scanner;
+
 import hust.soict.hedspi.aims.disc.DigitalVideoDisc;
 
 public class Cart {
@@ -18,12 +20,14 @@ public class Cart {
         }  
     }
 
+    // Add a DVD list 
     public void addDigitalVideoDisc(DigitalVideoDisc [] dvdList) {
         for (int i = 0 ; i < dvdList.length ; i++){
             this.addDigitalVideoDisc(dvdList[i]);
         }
     }
 
+    // Add 2 DVDs
     public void addDigitalVideoDisc(DigitalVideoDisc dvd1, DigitalVideoDisc dvd2) {
         this.addDigitalVideoDisc(dvd1);
         this.addDigitalVideoDisc(dvd2);
@@ -56,17 +60,42 @@ public class Cart {
         return total;
     }
 
-	public void print() {
+    // Print the list of ordered items of a cart
+	public void printCart() {
 		System.out.println("******************************CART******************************");
 		System.out.println("Ordered Items:");
 
-        for (int i = 0; i < qtyOrdered; i++) {
-            DigitalVideoDisc dvd = itemsOrdered[i];
-            System.out.printf("%d. DVD - %s - %s - %s - %s: %.2f$\n",
-            		i+1, dvd.getTitle(), dvd.getCategory(), dvd.getDirector(), dvd.getLength(), dvd.getCost());
-        }
-
+        for (int i = 0; i < qtyOrdered; i++)
+            System.out.print((i+1) + ". " + itemsOrdered[i].toString());
         System.out.println("Total cost: " + totalCost());
         System.out.println("****************************************************************");
+	}
+	
+	// Search for DVDs in the cart by ID and display the result
+	public void searchByID() {
+		Scanner scanner = new Scanner(System.in);
+		System.out.print("Enter ID: ");
+		int id = scanner.nextInt();
+		for (int i = 0; i < qtyOrdered; i++) {
+			if (itemsOrdered[i].getId() == id) {
+				System.out.println("Search by id: " + id + ": " + itemsOrdered[i].toString());
+				return;
+			}
+		}
+		System.out.println("No match is found!");
+	}
+
+	// Search for DVDs in the cart by title and display the result
+	public void searchByTitle() {
+		Scanner scanner = new Scanner(System.in);
+		System.out.print("Enter title: ");
+		String title = scanner.nextLine();
+		for (int i = 0; i < qtyOrdered; i++) {
+			if (itemsOrdered[i].isMatch(title)) {
+				System.out.println("Search by title: " + title + ": " + itemsOrdered[i].toString());
+				return;
+			}
+		}
+		System.out.println("No match is found!");
 	}
 }

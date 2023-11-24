@@ -22,7 +22,11 @@ public class CartTest {
 		cart.addDigitalVideoDisc(dvd3);
 		
 		// Test the print method
-		cart.print();
-		// To-do: Test the search methods here
+		cart.printCart();
+		
+		// Search by ID
+		cart.searchByID();
+		// Search by Title
+		cart.searchByTitle();
 	}
 }
