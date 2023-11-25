@@ -46,12 +46,6 @@ public class DigitalVideoDisc extends Disc implements Playable {
     	return this.getTitle() + " - " + this.getCategory() + " - " + this.getDirector()
     	 + " - " + this.getLength() + " - " + this.getCost() + "$\n";
     }
-    public boolean isMatch(String title) {
-    	if (getTitle().equals(title))
-    		return true;
-    	else
-    		return false;
-    }
     
     @Override
     public void play() {
