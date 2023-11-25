@@ -7,10 +7,20 @@ public class Book extends Media{
 
 	private List<String> authors = new ArrayList<String>();
 	
+	// Create constructor method
 	public Book() {
 		// TODO Auto-generated constructor stub
 	}
 
+	public Book(String title, String category, float cost) {
+		setTitle(title);
+		setCategory(category);
+		setCost(cost);
+		setId(nbMedia);
+		nbMedia++;
+	}
+
+	// Add author
 	public void addAuthor(String authorName) {
 		if (authors.contains(authorName)) {
 			System.out.println("The author is already in the list.");
@@ -21,6 +31,7 @@ public class Book extends Media{
 		}
 	}
 	
+	// Remove author
 	public void removeAuthor (String authorName) {
 		if (authors.contains(authorName)) {
 			authors.remove(authorName);

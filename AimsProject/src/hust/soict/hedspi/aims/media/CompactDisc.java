@@ -13,8 +13,18 @@ public class CompactDisc extends Disc implements Playable {
 		// TODO Auto-generated constructor stub
 	}
 	
+	public CompactDisc(String title, String artist, float cost) {
+		setTitle(title);
+		this.artist = artist;
+		setCost(cost);
+		setId(nbMedia);
+		nbMedia++;
+	}
+
 	public CompactDisc(int id, String title, String category, float cost, String director, int length) {
         super(id, title, category, cost, director, length);
+		setId(nbMedia);
+		nbMedia++;
     }
 	
 	// Add track

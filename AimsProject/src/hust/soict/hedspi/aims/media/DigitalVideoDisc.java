@@ -13,6 +13,8 @@ public class DigitalVideoDisc extends Disc implements Playable {
 		setTitle(title);
 		setId(nbDigitalVideoDiscs);
 		nbDigitalVideoDiscs++;
+		setId(nbMedia);
+		nbMedia++;
 	}
 
 	public DigitalVideoDisc(String title, String category, float cost) {
@@ -21,6 +23,8 @@ public class DigitalVideoDisc extends Disc implements Playable {
 		setCost(cost);
 		setId(nbDigitalVideoDiscs);
 		nbDigitalVideoDiscs++;
+		setId(nbMedia);
+		nbMedia++;
 	}
 	
 	public DigitalVideoDisc(String title, String category, String director, float cost) {
@@ -30,6 +34,8 @@ public class DigitalVideoDisc extends Disc implements Playable {
 		setCost(cost);
 		setId(nbDigitalVideoDiscs);
 		nbDigitalVideoDiscs++;
+		setId(nbMedia);
+		nbMedia++;
 	}
 	
 	public DigitalVideoDisc(String title, String category, String director, int length, float cost) {
@@ -40,6 +46,8 @@ public class DigitalVideoDisc extends Disc implements Playable {
 		setCost(cost);
 		setId(nbDigitalVideoDiscs);
 		nbDigitalVideoDiscs++;
+		setId(nbMedia);
+		nbMedia++;
 	}
     
     public String toString() {

@@ -6,20 +6,27 @@ public abstract class Media {
 	private String title;
 	private String category;
 	private float cost;
+	protected static int nbMedia = 0;
 	
 	public Media() {
-		// TODO Auto-generated constructor stub
+		
 	}
-
+	
 	public Media(String title) {
+		this.id = Count();
 		this.title = title;
 	}
 	
 	public Media(int id, String title, String category, float cost) {
-		this.id = id;
+		this.id = Count();
 		this.title = title;
 		this.category = category;
 		this.cost = cost;
+	}
+	
+	private int Count() {
+		nbMedia++;
+		return nbMedia;
 	}
 	
     public boolean isMatch(String title) {
@@ -60,7 +67,7 @@ public abstract class Media {
 	public void setCost(float cost) {
 		this.cost = cost;
 	}
-	
+
 	@Override
 	public boolean equals(Object o) {
 		Media tmp = (Media)o;
@@ -69,4 +76,10 @@ public abstract class Media {
 		else return false;
 	}
 
+	@Override
+	public String toString() {
+		return "Media: " + (this.getId()+1) + ". " + this.getTitle() +
+				" - " + this.getCategory() + ": " + this.getCost() + "$\n";
+	}
+	
 }
