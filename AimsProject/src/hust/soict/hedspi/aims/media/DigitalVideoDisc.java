@@ -2,8 +2,6 @@ package hust.soict.hedspi.aims.media;
 
 public class DigitalVideoDisc extends Disc implements Playable {
 
-    private static int nbDigitalVideoDiscs = 0;
-
     // Create constructor method
     public DigitalVideoDisc() {
     	super();
@@ -11,8 +9,6 @@ public class DigitalVideoDisc extends Disc implements Playable {
 
     public DigitalVideoDisc(String title) {
 		setTitle(title);
-		setId(nbDigitalVideoDiscs);
-		nbDigitalVideoDiscs++;
 		setId(nbMedia);
 		nbMedia++;
 	}
@@ -21,8 +17,6 @@ public class DigitalVideoDisc extends Disc implements Playable {
 		setTitle(title);
 		setCategory(category);
 		setCost(cost);
-		setId(nbDigitalVideoDiscs);
-		nbDigitalVideoDiscs++;
 		setId(nbMedia);
 		nbMedia++;
 	}
@@ -32,8 +26,6 @@ public class DigitalVideoDisc extends Disc implements Playable {
 		setCategory(category);
 		setDirector(director);
 		setCost(cost);
-		setId(nbDigitalVideoDiscs);
-		nbDigitalVideoDiscs++;
 		setId(nbMedia);
 		nbMedia++;
 	}
@@ -44,8 +36,6 @@ public class DigitalVideoDisc extends Disc implements Playable {
 		setDirector(director);
 		setLength(length);
 		setCost(cost);
-		setId(nbDigitalVideoDiscs);
-		nbDigitalVideoDiscs++;
 		setId(nbMedia);
 		nbMedia++;
 	}

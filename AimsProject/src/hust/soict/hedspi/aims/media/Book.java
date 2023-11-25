@@ -41,6 +41,12 @@ public class Book extends Media{
 		}
 	}
 	
+	@Override
+	public String toString() {
+		return (getId() + 1) + ". Book - " + this.getTitle() + " - " + this.getCategory()
+				+ ": " + this.getCost() + "$\n";
+	}
+
 	// Create accessor and mutator
 	public List<String> getAuthors() {
 		return authors;

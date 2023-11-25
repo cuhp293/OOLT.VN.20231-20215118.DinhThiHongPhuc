@@ -48,6 +48,13 @@ public class CompactDisc extends Disc implements Playable {
 		}
 	}
 	
+	@Override
+	public String toString() {
+		return (getId() + 1) + ". CompactDisc - " + this.getTitle() + " - "
+				+ getArtist() + " - " + getLength() + " - " + getDirector()
+				+ " - "	+ getCategory() + ": " + getCost() + "$\n";
+	}
+
 	// Create getter and setter
 	public String getArtist() {
 		return artist;

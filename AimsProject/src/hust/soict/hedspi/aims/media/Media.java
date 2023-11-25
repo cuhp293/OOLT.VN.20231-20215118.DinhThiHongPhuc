@@ -75,11 +75,5 @@ public abstract class Media {
 			return true;
 		else return false;
 	}
-
-	@Override
-	public String toString() {
-		return "Media: " + (this.getId()+1) + ". " + this.getTitle() +
-				" - " + this.getCategory() + ": " + this.getCost() + "$\n";
-	}
 	
 }
