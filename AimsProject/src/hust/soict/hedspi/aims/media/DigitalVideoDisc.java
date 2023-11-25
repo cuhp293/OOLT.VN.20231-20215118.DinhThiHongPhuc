@@ -50,10 +50,12 @@ public class DigitalVideoDisc extends Disc implements Playable {
 		nbMedia++;
 	}
     
-    public String toString() {
-    	return this.getTitle() + " - " + this.getCategory() + " - " + this.getDirector()
-    	 + " - " + this.getLength() + " - " + this.getCost() + "$\n";
-    }
+	@Override
+	public String toString() {
+		return (getId() + 1) + ". DVD - " + this.getTitle() + " - " + this.getCategory() + 
+				" - " + this.getDirector() + " - " + this.getLength() + 
+				": " + this.getCost() + "$\n";
+	}
     
     @Override
     public void play() {

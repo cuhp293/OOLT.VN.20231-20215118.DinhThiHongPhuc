@@ -49,14 +49,11 @@ public class Cart {
 
     // Print the list of ordered items of a cart
 	public void printCart() {
-		int i = 1;
 		System.out.println("******************************CART******************************");
 		System.out.println("Ordered Items:");
 
-        for (Media media : itemsOrdered) {
-            System.out.print(i + ". DVD - " + media.toString());
-            i++;
-        }
+        for (Media media : itemsOrdered)
+            System.out.print (media.toString());
         System.out.println("Total cost: " + totalCost());
         System.out.println("****************************************************************");
 	}
