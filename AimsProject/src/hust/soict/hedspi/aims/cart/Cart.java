@@ -1,6 +1,7 @@
 package hust.soict.hedspi.aims.cart;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 import hust.soict.hedspi.aims.media.Media;
@@ -29,6 +30,20 @@ public class Cart {
 		} else {
 			System.out.println("The media is not in the cart.");
 		}
+	}
+	
+	// Sort by Title
+	public void sortByTitle() {
+		System.out.println("Sort by Title: ");
+		Collections.sort(itemsOrdered, Media.COMPARE_BY_TITLE_COST);
+		printCart();
+	}
+	
+	// Sort by Cost
+	public void sortByCost() {
+		System.out.println("Sort by Cost: ");
+		Collections.sort(itemsOrdered, Media.COMPARE_BY_COST_TITLE);
+		printCart();
 	}
 
     public void displayCartItems() {

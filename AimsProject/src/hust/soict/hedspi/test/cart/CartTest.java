@@ -28,5 +28,11 @@ public class CartTest {
 		cart.searchByID();
 		// Search by Title
 		cart.searchByTitle();
+		
+		// Sort by Title
+		cart.sortByTitle();
+		
+		// Sort by Cost
+		cart.sortByCost();
 	}
 }
