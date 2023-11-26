@@ -1,6 +1,6 @@
-package hust.soict.hedspi.disc.TestPassingParameter;
+package hust.soict.hedspi.test.media;
 
-import hust.soict.hedspi.aims.disc.DigitalVideoDisc.DigitalVideoDisc;
+import hust.soict.hedspi.aims.media.DigitalVideoDisc;
 
 public class TestPassingParameter {
 	public static void main(String[] args) {
