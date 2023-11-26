@@ -27,4 +27,28 @@ public class Store {
 			System.out.println("The media is not in the store.");
 		}
 	}
+	
+	// Print the list of items of the store
+    public void printStore() {
+        if (itemsInStore.size() == 0) {
+            System.out.println("The store is empty!");
+        } else {
+            System.out.println("\n\n********************MEDIA IN STORE**********************");
+            for (Media media : itemsInStore) {
+                System.out.println(media.toString());
+            }
+            System.out.println("********************************************************");
+        }
+    }
+
+    // Search media by title and display the result
+    public Media searchByTitle(String title) {
+		for (Media media : itemsInStore) {
+			if (media.isMatch(title)) {
+				return media;
+			}
+		}
+		return null;
+	}
+    
 }

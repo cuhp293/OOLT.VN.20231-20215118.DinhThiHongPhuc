@@ -20,6 +20,15 @@ public class CompactDisc extends Disc implements Playable {
 		setId(nbMedia);
 		nbMedia++;
 	}
+	
+	public CompactDisc(String title, String category, String artist, float cost) {
+		setTitle(title);
+		setCategory(category);
+		this.artist = artist;
+		setCost(cost);
+		setId(nbMedia);
+		nbMedia++;
+	}
 
 	public CompactDisc(int id, String title, String category, float cost, String director, int length) {
         super(id, title, category, cost, director, length);
@@ -54,7 +63,7 @@ public class CompactDisc extends Disc implements Playable {
 				+ getArtist() + " - " + getLength() + " - " + getDirector()
 				+ " - "	+ getCategory() + ": " + getCost() + "$\n";
 	}
-
+	
 	// Create getter and setter
 	public String getArtist() {
 		return artist;

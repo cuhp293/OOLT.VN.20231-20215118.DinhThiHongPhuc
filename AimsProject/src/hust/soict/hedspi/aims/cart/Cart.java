@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
+import hust.soict.hedspi.aims.media.DigitalVideoDisc;
 import hust.soict.hedspi.aims.media.Media;
 
 public class Cart {
@@ -64,7 +65,7 @@ public class Cart {
 
     // Print the list of ordered items of a cart
 	public void printCart() {
-		System.out.println("******************************CART******************************");
+		System.out.println("\n\n******************************CART******************************");
 		System.out.println("Ordered Items:");
 
         for (Media media : itemsOrdered)
@@ -100,4 +101,34 @@ public class Cart {
 		}
 		System.out.println("No match is found!");
 	}
+	
+	// Search media to remove from cart
+	public Media searchByTitleRemove(String title) {
+		for (Media media : itemsOrdered) {
+			if (media.isMatch(title)) {
+				return media;
+			}
+		}
+		return null;
+	}
+	
+	// Count DVD in the current cart
+	public void countDVDs() {
+		int i = 0;
+		for (Media media : itemsOrdered) {
+			if (media instanceof DigitalVideoDisc)
+				i++;
+		}
+		System.out.println("The number of DVDs in the current cart: " + i);
+	}
+	
+	public void placeOrder() {
+		if (itemsOrdered.size() == 0)
+			System.out.println("Cart is empty!");
+		else {
+			itemsOrdered.clear();
+			System.out.println("An order is created, your current cart is empty!");
+		}
+	}
+
 }
