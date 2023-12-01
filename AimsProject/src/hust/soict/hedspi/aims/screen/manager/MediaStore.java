@@ -1,8 +1,6 @@
 package hust.soict.hedspi.aims.screen.manager;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Container;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -13,12 +11,8 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JDialog;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-
 import hust.soict.hedspi.aims.media.Media;
 import hust.soict.hedspi.aims.media.Playable;
 
@@ -56,7 +50,7 @@ public class MediaStore extends JPanel {
 		this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 	}
 	
-	public class ButtonListener implements ActionListener {
+	private class ButtonListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			JDialog dialog = new JDialog();
