@@ -43,10 +43,6 @@ public abstract class Media {
     		return false;
     }
 
-	public void play() {
-		
-	};
-
 	public int getId() {
 		return this.id;
 	}
@@ -64,7 +60,7 @@ public abstract class Media {
 	}
 
 	public String getCategory() {
-		return this.category;
+		return category;
 	}
 
 	public void setCategory(String category) {

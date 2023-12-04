@@ -1,16 +1,26 @@
 package hust.soict.hedspi.aims.screen.manager;
 
-import hust.soict.hedspi.aims.store.Store;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 public class AddCompactDiscToStoreScreen extends AddItemToStoreScreen {
 	
-	public AddCompactDiscToStoreScreen(Store store) {
-		super(store);
-		this.setTitle("Add CD");
-	}
+	JPanel createCenter() {
+		JPanel panel = super.createCenter();
 
-	public static void main(String[] args) {
-		new AddCompactDiscToStoreScreen(store);
+		JTextField lengthField = new JTextField("Input length: ");
+		JTextField directorField = new JTextField("Input director: ");
+		JTextField artistField = new JTextField("Input artist: ");
+
+		panel.add(lengthField);
+		panel.add(directorField);
+		panel.add(artistField);
+
+		JButton btnAdd = new JButton("Add CD to the store");
+		panel.add(btnAdd);
+
+		return panel;
 	}
 
 }

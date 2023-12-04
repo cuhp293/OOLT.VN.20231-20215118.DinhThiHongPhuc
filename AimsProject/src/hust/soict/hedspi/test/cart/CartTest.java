@@ -1,5 +1,7 @@
 package hust.soict.hedspi.test.cart;
 
+import java.util.Scanner;
+
 import hust.soict.hedspi.aims.cart.Cart;
 import hust.soict.hedspi.aims.media.DigitalVideoDisc;
 
@@ -24,15 +26,20 @@ public class CartTest {
 		// Test the print method
 		cart.printCart();
 		
+		
+		Scanner scanner = new Scanner(System.in);
 		// Search by ID
-		cart.searchByID();
+		int id = scanner.nextInt();
+		cart.searchByID(id);
 		// Search by Title
-		cart.searchByTitle();
+		String title = scanner.nextLine();
+		cart.searchByTitle(title);
 		
 		// Sort by Title
 		cart.sortByTitle();
 		
 		// Sort by Cost
 		cart.sortByCost();
+		
 	}
 }

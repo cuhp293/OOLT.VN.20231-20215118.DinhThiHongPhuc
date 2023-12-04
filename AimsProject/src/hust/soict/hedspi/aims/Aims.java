@@ -105,15 +105,7 @@ public class Aims {
 			System.out.print("Enter the title of the media: ");
 			String titlePlay = scanner.nextLine();
 			Media mediaPlay = store.searchByTitle(titlePlay);
-			if (mediaPlay != null) {
-				if (mediaPlay instanceof Disc || mediaPlay instanceof CompactDisc) {
-					mediaPlay.play();
-				} else {
-					System.out.println("Can't play this media!");
-				}
-			} else {
-				System.out.println("Media not found!");
-			}
+			PlayMedia(mediaPlay);
 			break;
 		case 4:
 			// See current cart
@@ -145,11 +137,7 @@ public class Aims {
 			break;
 		case 2:
 			// Play
-			if (mediaDetails instanceof Disc || mediaDetails instanceof CompactDisc) {
-				mediaDetails.play();
-			} else {
-				System.out.println("Can't play this media!");
-			}
+			PlayMedia(mediaDetails);
 			break;
 		case 0:
 			break;
@@ -186,6 +174,10 @@ public class Aims {
             Float mediaCost = scanner.nextFloat();
             scanner.nextLine();
 			
+            do {
+				System.out.print("Please choose a number: 1-2-3: ");
+				category = scanner.nextInt();
+			} while (category != 1 && category != 2 && category != 3);
 			if (category == 1) {
 				// Book
                 Book newBook = new Book(mediaTitle, mediaCategory, mediaCost);
@@ -223,8 +215,7 @@ public class Aims {
 				DigitalVideoDisc newDVD = new DigitalVideoDisc(mediaTitle, mediaCategory,
 									dvdDirector, dvdLength);
 				store.addMedia(newDVD);
-			} else
-				System.out.println("Invalid option. Please choose a number: 1-2-3: ");
+			}
 			break;
 		case 2:
 			// Remove a media
@@ -265,25 +256,33 @@ public class Aims {
 			// Filter media in cart
 			System.out.print("Filter media by id (1), by title (2): ");
 			int filter = scanner.nextInt();
+			do {
+				System.out.print("Please choose a number: 1-2: ");
+				filter = scanner.nextInt();
+			} while (filter != 1 && filter != 2);
 			scanner.nextLine();
 			if (filter == 1) {
-				cart.searchByID();
+				int id = scanner.nextInt();
+				System.out.println(cart.searchByID(id));
 			} else if (filter == 2) {
-				cart.searchByTitle();
-			} else
-				System.out.print("Please choose a number: 1-2: ");
+				String title = scanner.nextLine();
+				System.out.println(cart.searchByTitle(title));
+			}
 			break;
 		case 2:
 			// Sort media in cart
 			System.out.print("Filter media by title (1), by cost (2): ");
 			int sort = scanner.nextInt();
 			scanner.nextLine();
+			do {
+				System.out.print("Please choose a number: 1-2: ");
+				sort = scanner.nextInt();
+			} while (sort != 1 && sort != 2);
 			if (sort == 1) {
 				cart.sortByTitle();
 			} else if (sort == 2) {
 				cart.sortByCost();
-			} else
-				System.out.print("Please choose a number: 1-2: ");
+			}
 			break;
 		case 3:
 			// Remove media from cart
@@ -299,16 +298,8 @@ public class Aims {
 			// Play a media
 			System.out.print("Enter the title of the media: ");
 			String titlePlay = scanner.nextLine();
-			Media mediaPlay = store.searchByTitle(titlePlay);
-			if (mediaPlay != null) {
-				if (mediaPlay instanceof Disc || mediaPlay instanceof CompactDisc) {
-					mediaPlay.play();
-				} else {
-					System.out.println("Can't play this media!");
-				}
-			} else {
-				System.out.println("Media not found!");
-			}
+			Media mediaPlay = cart.searchByTitle(titlePlay);
+			PlayMedia(mediaPlay);
 			break;
 		case 5:
 			// Place order
@@ -318,6 +309,20 @@ public class Aims {
 			break;
 		default :
 			System.out.println("Invalid option. Please choose a number: 0-1-2-3-4-5: ");
+		}
+	}
+	
+	public static void PlayMedia(Media media) {
+		if (media != null) {
+			if (media instanceof DigitalVideoDisc) {
+				System.out.println(((DigitalVideoDisc) media).play());
+			} else if (media instanceof CompactDisc) {
+				System.out.println(((CompactDisc) media).play());
+			} else {
+				System.out.println("Can't play this media!");
+			}
+		} else {
+			System.out.println("Media not found!");
 		}
 	}
 	
