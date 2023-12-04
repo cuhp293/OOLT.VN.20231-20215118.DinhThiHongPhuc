@@ -2,8 +2,6 @@ package hust.soict.hedspi.aims.cart;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Scanner;
-
 import hust.soict.hedspi.aims.media.DigitalVideoDisc;
 import hust.soict.hedspi.aims.media.Media;
 
@@ -75,31 +73,24 @@ public class Cart {
 	}
 	
 	// Search for DVDs in the cart by ID and display the result
-	public void searchByID() {
-		Scanner scanner = new Scanner(System.in);
-		System.out.print("Enter ID: ");
-		int id = scanner.nextInt();
+	public Media searchByID(int id) {
 		for (Media media : itemsOrdered) {
 			if (media.getId() == (id-1)) {
-				System.out.println("Search by id: " + id + ": \n" + media.toString());
-				return;
+				return media;
 			}
 		}
 		System.out.println("No match is found!");
+		return null;
 	}
 
 	// Search for DVDs in the cart by title and display the result
-	public void searchByTitle() {
-		Scanner scanner = new Scanner(System.in);
-		System.out.print("Enter title: ");
-		String title = scanner.nextLine();
+	public Media searchByTitle(String title) {
 		for (Media media : itemsOrdered) {
-			if (media.isMatch(title)) {
-				System.out.println("Search by title: " + title + ": \n" + media.toString());
-				return;
-			}
+			if (media.isMatch(title))
+				return media;
 		}
 		System.out.println("No match is found!");
+		return null;
 	}
 	
 	// Search media to remove from cart

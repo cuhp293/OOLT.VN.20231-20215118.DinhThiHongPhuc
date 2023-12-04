@@ -1,11 +1,9 @@
 package hust.soict.hedspi.aims.screen.manager;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -13,6 +11,11 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+
+import hust.soict.hedspi.aims.media.CompactDisc;
+import hust.soict.hedspi.aims.media.DigitalVideoDisc;
 import hust.soict.hedspi.aims.media.Media;
 import hust.soict.hedspi.aims.media.Playable;
 
@@ -22,7 +25,6 @@ public class MediaStore extends JPanel {
 	
 	public MediaStore(Media media) {
 		this.media = media;
-		ButtonListener btnListener = new ButtonListener();
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		
 		JLabel title = new JLabel(media.getTitle());
@@ -37,8 +39,14 @@ public class MediaStore extends JPanel {
 		
 		if (media instanceof Playable) {
 			JButton playButton = new JButton("Play");
+			playButton.addActionListener(e -> {
+				if (media instanceof DigitalVideoDisc) {
+					createDialog(((DigitalVideoDisc) media).play());
+				} else {
+					createDialog(((CompactDisc) media).play());
+				}
+			});
 			container.add(playButton);
-			playButton.addActionListener(btnListener);
 		}
 		
 		this.add(Box.createVerticalGlue());
@@ -50,15 +58,19 @@ public class MediaStore extends JPanel {
 		this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 	}
 	
-	private class ButtonListener implements ActionListener {
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			JDialog dialog = new JDialog();
-			dialog.setAlwaysOnTop(true);
-			dialog.setTitle("Playing " + media.getTitle());
-			dialog.setSize(400, 300);
-			dialog.setVisible(true);
-		}
+	public void createDialog(String dialogText) {
+	    JDialog dialog = new JDialog();
+	    dialog.setLayout(new BorderLayout());
+	    
+	    JTextArea textArea = new JTextArea(dialogText);
+	    textArea.setLineWrap(true);
+	    textArea.setWrapStyleWord(true);
+
+	    JScrollPane scrollPane = new JScrollPane(textArea);
+	    dialog.add(scrollPane, BorderLayout.CENTER);
+
+	    dialog.setSize(300, 200);
+	    dialog.setVisible(true);
 	}
 	
 }

@@ -1,24 +1,22 @@
 package hust.soict.hedspi.aims.screen.manager;
 
-import javax.swing.JFrame;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
-import hust.soict.hedspi.aims.media.CompactDisc;
-
-public class AddTrackToStoreScreen extends JFrame {
+public class AddTrackToStoreScreen extends AddItemToStoreScreen {
 	
-	private static CompactDisc CD;
-
-	public AddTrackToStoreScreen(CompactDisc CD) {
-		super();
-		this.CD = CD;
+	JPanel createCenter() {
+		JPanel panel = super.createCenter();
 		
-		this.setTitle("Add Track");
-		this.setSize(600, 300);
-		this.setVisible(true);
-	}
-	
-	public static void main(String[] args) {
-		new AddTrackToStoreScreen(CD);
+		JTextField lengthField = new JTextField("Input track length: ");
+
+		panel.add(lengthField);
+
+		JButton btnAdd = new JButton("Add Track to the store");
+		panel.add(btnAdd);
+
+		return panel;
 	}
 
 }

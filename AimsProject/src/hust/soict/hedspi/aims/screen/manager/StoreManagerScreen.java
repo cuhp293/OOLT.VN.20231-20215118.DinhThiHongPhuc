@@ -2,13 +2,13 @@ package hust.soict.hedspi.aims.screen.manager;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.LayoutManager;
 import java.util.ArrayList;
 
 import javax.swing.Box;
@@ -24,11 +24,13 @@ import hust.soict.hedspi.aims.media.Book;
 import hust.soict.hedspi.aims.media.CompactDisc;
 import hust.soict.hedspi.aims.media.DigitalVideoDisc;
 import hust.soict.hedspi.aims.media.Media;
+import hust.soict.hedspi.aims.media.Track;
 import hust.soict.hedspi.aims.store.Store;
 
 public class StoreManagerScreen extends JFrame {
 	
 	private static Store store;
+	Container cp = getContentPane();
 	
 	JPanel createNorth() {
 		JPanel north = new JPanel();
@@ -42,26 +44,32 @@ public class StoreManagerScreen extends JFrame {
 		JMenu menu = new JMenu("Options");
 		
 		JMenuItem viewStoreMenu = new JMenuItem("View store");
+		viewStoreMenu.addActionListener(e -> {
+			addNewCenter(this.createCenter());
+		});
 		menu.add(viewStoreMenu);
 		
 		JMenu smUpdateStore = new JMenu("Update Store");
 		JMenuItem smAddBook = new JMenuItem("Add Book");
+		smAddBook.addActionListener(e -> {
+			AddBookToStoreScreen bookScreen = new AddBookToStoreScreen();
+			addNewCenter(bookScreen.createCenter());
+		});
 		smUpdateStore.add(smAddBook);
+		
 		JMenuItem smAddCD = new JMenuItem("Add CD");
+		smAddCD.addActionListener(e -> {
+			AddCompactDiscToStoreScreen cdScreen = new AddCompactDiscToStoreScreen();
+			addNewCenter(cdScreen.createCenter());
+		});
 		smUpdateStore.add(smAddCD);
+		
 		JMenuItem smAddDVD = new JMenuItem("Add DVD");
-        smUpdateStore.add(smAddDVD);        
-
-        smAddBook.addActionListener(new ButtonListener());
-        smAddCD.addActionListener(new ButtonListener());
-        smAddDVD.addActionListener(new ButtonListener());
-        
-        viewStoreMenu.addActionListener(new ActionListener() {
-        	@Override
-        	public void actionPerformed(ActionEvent e) {
-        		new StoreManagerScreen(store);
-        	}
-        });
+		smAddDVD.addActionListener(e -> {
+			AddDigitalVideoDiscToStoreScreen dvdScreen = new AddDigitalVideoDiscToStoreScreen();
+			addNewCenter(dvdScreen.createCenter());
+		});
+        smUpdateStore.add(smAddDVD);
 
 		menu.add(smUpdateStore);
 		
@@ -70,6 +78,15 @@ public class StoreManagerScreen extends JFrame {
 		menuBar.add(menu);
 		
 		return menuBar;
+	}
+
+	public void addNewCenter(JPanel panel) {
+		LayoutManager layout = cp.getLayout();
+		Component centerComponent = ((BorderLayout) layout).getLayoutComponent(cp, BorderLayout.CENTER);
+		cp.remove(centerComponent);
+		cp.add(panel, BorderLayout.CENTER);
+		cp.revalidate();
+		cp.repaint();
 	}
 
 	JPanel createHeader() {
@@ -95,28 +112,11 @@ public class StoreManagerScreen extends JFrame {
 		
 		ArrayList<Media> mediaInStore = store.getItemsInStore();
 		for (int i = 0; i < 9; i++) {
-			if (i < mediaInStore.size()) {
 				MediaStore cell = new MediaStore(mediaInStore.get(i));
 				center.add(cell);
-			} else
-				System.out.println("Error");
 		}
 		
 		return center;
-	}
-	
-	private class ButtonListener implements ActionListener {
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			String cmd = e.getActionCommand();
-			if (cmd.equals("Add Book")) {
-				new AddBookToStoreScreen(store);
-			} else if (cmd.equals("Add CD")) {
-				new AddCompactDiscToStoreScreen(store);
-			} else if (cmd.equals("Add DVD")) {
-				new AddDigitalVideoDiscToStoreScreen(store);
-			}
-		}
 	}
 	
 	public StoreManagerScreen(Store store) {		
@@ -152,6 +152,12 @@ public class StoreManagerScreen extends JFrame {
         store.addMedia(dvd7);
         CompactDisc cd = new CompactDisc("Folklore", "Taylor Swift", 300.64f);
         store.addMedia(cd);
+        Track track1 = new Track("The 1", 143);
+        cd.addTrack(track1);
+        Track track2 = new Track("Betty", 354);
+        cd.addTrack(track2);
+        Track track3 = new Track("Seven", 437);
+        cd.addTrack(track3);
         Book book = new Book("Harry Potter", "Fantasy", 18.35f);
         store.addMedia(book);
         
