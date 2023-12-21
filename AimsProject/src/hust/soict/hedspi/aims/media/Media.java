@@ -75,12 +75,17 @@ public abstract class Media {
 		this.cost = cost;
 	}
 	
-	@Override
-	public boolean equals(Object o) {
-		Media tmp = (Media)o;
-		if(this.getTitle() == tmp.getTitle())
-			return true;
-		else return false;
+	public boolean equals(Media media) {
+		try {
+			if (this.title.equals(media.getTitle()) && this.cost == media.getCost()) {
+				return true;
+			}
+		} catch (NullPointerException e) {
+			e.printStackTrace();
+		} catch (ClassCastException e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 	
 }
