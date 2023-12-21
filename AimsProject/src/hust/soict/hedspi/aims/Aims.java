@@ -3,10 +3,10 @@ package hust.soict.hedspi.aims;
 import java.util.*;
 
 import hust.soict.hedspi.aims.cart.Cart;
+import hust.soict.hedspi.aims.exception.PlayerException;
 import hust.soict.hedspi.aims.media.Book;
 import hust.soict.hedspi.aims.media.CompactDisc;
 import hust.soict.hedspi.aims.media.DigitalVideoDisc;
-import hust.soict.hedspi.aims.media.Disc;
 import hust.soict.hedspi.aims.media.Media;
 import hust.soict.hedspi.aims.media.Track;
 import hust.soict.hedspi.aims.store.Store;
@@ -59,7 +59,7 @@ public class Aims {
 		System.out.print("Please choose a number: 0-1-2-3: ");
 	}
 	
-	public static void storeMenu() {
+	public static void storeMenu() throws PlayerException {
 		System.out.println("\n\nOptions: ");
 		System.out.println("---------------------------------");
 		System.out.println("1. See a media's details");
@@ -118,7 +118,7 @@ public class Aims {
 		}
 	}
 	
-	public static void mediaDetailsMenu(Scanner scanner, Media mediaDetails) {
+	public static void mediaDetailsMenu(Scanner scanner, Media mediaDetails) throws PlayerException {
 		System.out.println("\n\nOptions: ");
 		System.out.println("------------------------------");
 		System.out.println("1. Add to cart");
@@ -174,10 +174,6 @@ public class Aims {
             Float mediaCost = scanner.nextFloat();
             scanner.nextLine();
 			
-            do {
-				System.out.print("Please choose a number: 1-2-3: ");
-				category = scanner.nextInt();
-			} while (category != 1 && category != 2 && category != 3);
 			if (category == 1) {
 				// Book
                 Book newBook = new Book(mediaTitle, mediaCategory, mediaCost);
@@ -215,7 +211,8 @@ public class Aims {
 				DigitalVideoDisc newDVD = new DigitalVideoDisc(mediaTitle, mediaCategory,
 									dvdDirector, dvdLength);
 				store.addMedia(newDVD);
-			}
+			} else
+				System.out.println("Invalid option. Please choose a number: 1-2-3: ");
 			break;
 		case 2:
 			// Remove a media
@@ -234,7 +231,7 @@ public class Aims {
 		}
 	}
 	
-	public static void cartMenu() {
+	public static void cartMenu() throws PlayerException {
 		cart.printCart();
 		System.out.println("\n\nOptions: ");
 		System.out.println("-----------------------------------");
@@ -256,33 +253,26 @@ public class Aims {
 			// Filter media in cart
 			System.out.print("Filter media by id (1), by title (2): ");
 			int filter = scanner.nextInt();
-			do {
-				System.out.print("Please choose a number: 1-2: ");
-				filter = scanner.nextInt();
-			} while (filter != 1 && filter != 2);
-			scanner.nextLine();
 			if (filter == 1) {
 				int id = scanner.nextInt();
 				System.out.println(cart.searchByID(id));
 			} else if (filter == 2) {
 				String title = scanner.nextLine();
 				System.out.println(cart.searchByTitle(title));
-			}
+			} else
+				System.out.print("Please choose a number: 1-2: ");
 			break;
 		case 2:
 			// Sort media in cart
 			System.out.print("Filter media by title (1), by cost (2): ");
 			int sort = scanner.nextInt();
 			scanner.nextLine();
-			do {
-				System.out.print("Please choose a number: 1-2: ");
-				sort = scanner.nextInt();
-			} while (sort != 1 && sort != 2);
 			if (sort == 1) {
 				cart.sortByTitle();
 			} else if (sort == 2) {
 				cart.sortByCost();
-			}
+			} else
+				System.out.print("Please choose a number: 1-2: ");
 			break;
 		case 3:
 			// Remove media from cart
@@ -312,7 +302,7 @@ public class Aims {
 		}
 	}
 	
-	public static void PlayMedia(Media media) {
+	public static void PlayMedia(Media media) throws PlayerException {
 		if (media != null) {
 			if (media instanceof DigitalVideoDisc) {
 				System.out.println(((DigitalVideoDisc) media).play());
@@ -326,7 +316,7 @@ public class Aims {
 		}
 	}
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws PlayerException {
 		
 		Scanner scanner = new Scanner(System.in);
 		

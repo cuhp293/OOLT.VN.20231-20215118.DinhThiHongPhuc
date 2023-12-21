@@ -4,6 +4,9 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -14,6 +17,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
+import hust.soict.hedspi.aims.exception.PlayerException;
 import hust.soict.hedspi.aims.media.CompactDisc;
 import hust.soict.hedspi.aims.media.DigitalVideoDisc;
 import hust.soict.hedspi.aims.media.Media;
@@ -25,6 +29,7 @@ public class MediaStore extends JPanel {
 	
 	public MediaStore(Media media) {
 		this.media = media;
+//		ButtonListener btnListener = new ButtonListener();
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		
 		JLabel title = new JLabel(media.getTitle());
@@ -41,12 +46,21 @@ public class MediaStore extends JPanel {
 			JButton playButton = new JButton("Play");
 			playButton.addActionListener(e -> {
 				if (media instanceof DigitalVideoDisc) {
-					createDialog(((DigitalVideoDisc) media).play());
+					try {
+						createDialog(((DigitalVideoDisc) media).play());
+					} catch (PlayerException e1) {
+						e1.printStackTrace();
+					}
 				} else {
-					createDialog(((CompactDisc) media).play());
+					try {
+						createDialog(((CompactDisc) media).play());
+					} catch (PlayerException e1) {
+						e1.printStackTrace();
+					}
 				}
 			});
 			container.add(playButton);
+//			playButton.addActionListener(btnListener);
 		}
 		
 		this.add(Box.createVerticalGlue());
@@ -57,6 +71,19 @@ public class MediaStore extends JPanel {
 		
 		this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 	}
+	
+//	public void createDialog(String playText) {
+//		JDialog dialog = new JDialog();
+//		JLabel label = new JLabel(playText);
+//		JTextArea textArea = new JTextArea(playText);
+//		textArea.setLineWrap(true);
+//		textArea.setWrapStyleWord(true);
+//		JScrollPane scrollPane = new JScrollPane(textArea);
+//		dialog.add(label);
+//		dialog.add(scrollPane);
+//		dialog.setSize(300, 200);
+//		dialog.setVisible(true);
+//	}
 	
 	public void createDialog(String dialogText) {
 	    JDialog dialog = new JDialog();
@@ -72,5 +99,17 @@ public class MediaStore extends JPanel {
 	    dialog.setSize(300, 200);
 	    dialog.setVisible(true);
 	}
+
+	
+//	private class ButtonListener implements ActionListener {
+//		@Override
+//		public void actionPerformed(ActionEvent e) {
+//			JDialog dialog = new JDialog();
+//			dialog.setAlwaysOnTop(true);
+//			dialog.setTitle("Playing " + media.getTitle());
+//			dialog.setSize(400, 300);
+//			dialog.setVisible(true);
+//		}
+//	}
 	
 }

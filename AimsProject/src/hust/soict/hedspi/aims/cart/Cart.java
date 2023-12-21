@@ -1,14 +1,15 @@
 package hust.soict.hedspi.aims.cart;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import hust.soict.hedspi.aims.media.DigitalVideoDisc;
 import hust.soict.hedspi.aims.media.Media;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class Cart {
 	
 	public static final int MAX_NUMBERS_ORDERED = 20;
-	private ArrayList<Media> itemsOrdered = new ArrayList<Media>();
+	private ObservableList<Media> itemsOrdered = FXCollections.observableArrayList();
 	
 	// Add Media
 	public void addMedia(Media media) {
@@ -120,6 +121,10 @@ public class Cart {
 			itemsOrdered.clear();
 			System.out.println("An order is created, your current cart is empty!");
 		}
+	}
+
+	public ObservableList<Media> getItemsOrdered() {
+		return itemsOrdered;
 	}
 
 }

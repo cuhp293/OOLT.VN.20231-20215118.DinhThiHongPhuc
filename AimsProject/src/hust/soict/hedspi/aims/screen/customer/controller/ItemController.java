@@ -3,6 +3,7 @@ package hust.soict.hedspi.aims.screen.customer.controller;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 
+import hust.soict.hedspi.aims.exception.PlayerException;
 import hust.soict.hedspi.aims.media.CompactDisc;
 import hust.soict.hedspi.aims.media.DigitalVideoDisc;
 import hust.soict.hedspi.aims.media.Media;
@@ -36,7 +37,7 @@ public class ItemController {
     }
 
     @FXML
-    void btnPlayClicked(ActionEvent event) {
+    void btnPlayClicked(ActionEvent event) throws PlayerException {
     	if (media instanceof DigitalVideoDisc) {
     		createDialog(((DigitalVideoDisc) media).play());
     	} else if (media instanceof CompactDisc) {

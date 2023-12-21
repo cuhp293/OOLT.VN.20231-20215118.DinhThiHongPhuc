@@ -1,5 +1,7 @@
 package hust.soict.hedspi.aims.media;
 
+import hust.soict.hedspi.aims.exception.PlayerException;
+
 public class DigitalVideoDisc extends Disc implements Playable {
 
     // Create constructor method
@@ -47,8 +49,12 @@ public class DigitalVideoDisc extends Disc implements Playable {
 				": " + this.getCost() + "$\n";
 	}
     
-    public String play() {
-        return "Playing DVD: " + this.getTitle() + "\nDVD length: " + this.getLength();
+    public String play() throws PlayerException{
+    	if (this.getLength() > 0)
+    		return "Playing DVD: " + this.getTitle() + "\n DVD length: " + this.getLength();
+		else {
+			throw new PlayerException("ERROR : DVD length is non-positive!");
+		}        
     }
     
 }
